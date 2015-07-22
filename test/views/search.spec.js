@@ -1,10 +1,10 @@
 /*global beforeEach, describe, it, assert, expect  */
 'use strict';
 
-describe('Home View', function () {
+describe('Search View', function () {
 
     beforeEach(function () {
-        this.HomeView = new TriviaL.Views.Home();
+        this.SearchView = new TriviaL.Views.Search();
     });
 
 });

@@ -10,7 +10,7 @@ window.TriviaL = {
         'use strict';
         console.log('Hello from Backbone!');
 
-        new this.Views.Login();
+        //new this.Views.Login();
     }
 };
 
