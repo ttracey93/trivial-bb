@@ -12,8 +12,8 @@
 
         <!-- Custom dependencies -->
         <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+        <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+        <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
 
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
@@ -37,7 +37,7 @@
           </nav>
         </div>
 
-        <div class="container" id="view">
+        <div id="view">
           <!-- Where our To Do app will go -->
         </div>
 
@@ -55,6 +55,8 @@
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/lodash/dist/lodash.compat.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/materialize/bin/materialize.js"></script>
         <script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
         <!-- endbuild -->
 
@@ -72,6 +74,7 @@
         <script src="scripts/views/home.js"></script>
         <script src="scripts/routes/router.js"></script>
         <script src="scripts/views/search.js"></script>
+        <script src="scripts/models/event.js"></script>
         <!-- endbuild -->
 </body>
 </html>

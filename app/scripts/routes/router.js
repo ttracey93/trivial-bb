@@ -9,7 +9,7 @@ TriviaL.Routers = TriviaL.Routers || {};
 
     TriviaL.Routers.AppRouter = Backbone.Router.extend({
         routes: {
-            "search": "search",
+            "": "search",
             "login": "login",
             "*actions": "defaultRoute"
             // matches http://example.com/#anything-here

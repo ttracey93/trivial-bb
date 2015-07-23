@@ -17,7 +17,14 @@ TriviaL.Views = TriviaL.Views || {};
 
         //className: '',
 
-        events: {},
+        events: {
+          "submit": "search"
+        },
+
+        search: function(e) {
+          var query = $("input[name='search-query']").val();
+          return false;
+        },
 
         initialize: function () {
             //this.listenTo(this.model, 'change', this.render);
