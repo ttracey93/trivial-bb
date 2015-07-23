@@ -6,7 +6,10 @@
     "lodash": "~2.4.1",
     "backbone": "~1.1.0",
     "modernizr": "~2.7.1",
-    "backbone.localStorage": "~1.1.16"
+    "backbone.localStorage": "~1.1.16",
+    "fontawesome": "~4.3.0",
+    "materialize": "~0.97.0",
+    "geolocator": "~1.2.9"
   },
   "devDependencies": {
     "chai": "~3.2.0",

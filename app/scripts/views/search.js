@@ -11,24 +11,40 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/search.ejs'],
 
-        //tagName: 'search-main',
-
-        //id: '',
-
-        //className: '',
+        //Create a google map geocoder object
+        geocoder: new google.maps.Geocoder(),
 
         events: {
           "submit": "search"
         },
 
+        initialize: function () {
+            /*
+             * @description: Sets up the location via HTML5 geolocation.
+             * @param {function} setUpHTML5Location - Called on success.
+             * @param {function} setUpHTML5Location - Called on success.
+             */
+            geolocator.locate(this.setUpHTML5Location);
+            this.render();
+        },
+
         search: function(e) {
-          var query = $("input[name='search-query']").val();
+          var address = $("input[name='search-query']").val();
+          this.geocoder.geocode({'address': address},function(results, status) {
+            if(status == google.maps.GeocoderStatus.OK) {
+               console.log(results[0]);
+               //Send to /search for listings.
+            } else {
+              console.log('Geocode was not successful.');
+            }
+          });
           return false;
         },
 
-        initialize: function () {
-            //this.listenTo(this.model, 'change', this.render);
-            this.render();
+        //Call back function for geolocator object on success.
+        setUpHTML5Location: function(location) {
+          var currentLocation = location.address.city + ", " + location.address.region;
+          $("#search").val(currentLocation);
         },
 
         render: function () {
