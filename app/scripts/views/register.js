@@ -7,13 +7,9 @@ TriviaL.Views = TriviaL.Views || {};
 
     TriviaL.Views.Register = Backbone.View.extend({
 
+        el: '#view',
+
         template: JST['app/scripts/templates/register.ejs'],
-
-        tagName: 'div',
-
-        id: '',
-
-        className: '',
 
         events: {},
 
@@ -23,7 +19,7 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         render: function () {
-            this.$el.html(this.template();
+            this.$el.html(this.template());
             return this;
         }
 

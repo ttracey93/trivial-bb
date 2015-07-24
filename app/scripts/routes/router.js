@@ -15,7 +15,7 @@ TriviaL.Routers = TriviaL.Routers || {};
             "register": "register",
             "dashboard": "dashboard",
             "login": "login",
-            "host": "host",
+            "hosts/:url": "host",
             "*actions": "defaultRoute"
             // matches http://example.com/#anything-here
         } ,
@@ -33,6 +33,10 @@ TriviaL.Routers = TriviaL.Routers || {};
         login: function() {
           console.log('Will the real login route please stand up');
           new TriviaL.Views.Login();
+        },
+        // Host profile route
+        host: function(url) {
+          new TriviaL.Views.Host({ 'url': url });
         }
     });
     // Initiate the router
