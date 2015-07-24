@@ -8,11 +8,7 @@ TriviaL.Views = TriviaL.Views || {};
     TriviaL.Views.Register = Backbone.View.extend({
 
         el: '#view',
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 029193062c17708bf4074a68a272bb0a5656ef02
+        
         template: JST['app/scripts/templates/register.ejs'],
 
         events: {
