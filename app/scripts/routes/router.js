@@ -10,7 +10,12 @@ TriviaL.Routers = TriviaL.Routers || {};
     TriviaL.Routers.AppRouter = Backbone.Router.extend({
         routes: {
             "": "search",
+            "search": "list",
+            "about": "about",
+            "register": "register",
+            "dashboard": "dashboard",
             "login": "login",
+            "host": "host",
             "*actions": "defaultRoute"
             // matches http://example.com/#anything-here
         } ,
@@ -19,6 +24,11 @@ TriviaL.Routers = TriviaL.Routers || {};
           console.log("search view");
           new TriviaL.Views.Search();
         } ,
+        //Create a new account.
+        register: function() {
+          console.log("register view");
+          new TriviaL.Views.Register();
+        },
         // Login router event.
         login: function() {
           console.log('Will the real login route please stand up');
