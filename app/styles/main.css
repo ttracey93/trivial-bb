@@ -3,12 +3,25 @@ body {
 }
 
 .search-box {
+  position: absolute; top: 0; left: 0;
   width: 100%;
+  height: 90.5%;
   background-color: #000;
-
   background-size: 100% 100%;
-  height: 800px;
-  max-height: 100%;
+}
+
+#register-page {
+  background-image: url("http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-223462.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 90.5%;
+  background-color: #000;
+}
+
+#register-btn {
+  width: 100%;
+  height: 50px;
 }
 
 .search-card {

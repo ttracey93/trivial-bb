@@ -8,11 +8,11 @@ TriviaL.Views = TriviaL.Views || {};
     TriviaL.Views.Register = Backbone.View.extend({
 
         el: '#view',
-        
+
         template: JST['app/scripts/templates/register.ejs'],
 
         events: {
-          'submit': 'register'
+          'submit #register-form': 'register'
         },
 
         initialize: function () {
@@ -25,16 +25,21 @@ TriviaL.Views = TriviaL.Views || {};
             return this;
         },
 
-        submitForm: function(e) {
-          if (this.confirmPassword) {
-            var data = getFormData();
+        register: function(e) {
+          if (this.confirmPassword()) {
+            var data = this.getFormData();
           } else {
-            console.log("Passwords Don't Match");
             var msg = "Passwords did not match.";
             this.formError(msg);
             return false;
           }
-          return false;
+        },
+
+        createAccount: function(data) {
+          var url = "/register";
+          $.post(url,data,function(json) {
+            //Deal with response;
+          });
         },
 
         getFormData: function() {
@@ -57,10 +62,16 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         formError: function(msg) {
-          $("#form-error-message").text = msg;
-          $("#form-error").display = 'inline';
+          var errorSign = "<i class='fa fa-exclamation-circle'></i>";
+          msg = errorSign + " " + msg;
+          $("#form-error-message")
+            .html(msg)
+            .css('display','block');
         }
-
+//
+//border-bottom: 1px solid #F44336;
+//box-shadow: 0 1px 0 0 #F44336;
+//
     });
 
 })();

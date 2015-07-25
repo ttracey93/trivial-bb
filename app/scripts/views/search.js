@@ -25,17 +25,6 @@ TriviaL.Views = TriviaL.Views || {};
              * @param {function} setUpHTML5Location - Called on success.
              */
             geolocator.locate(this.setUpHTML5Location);
-
-            $(function() {
-              $('.search-box').vegas({
-                slides: [
-                  { src: 'images/city0.jpg' },
-                  { src: 'images/city1.jpg' },
-                  { src: 'images/city2.jpg' }
-                ]
-              });
-            });
-
             this.render();
         },
 
@@ -60,6 +49,15 @@ TriviaL.Views = TriviaL.Views || {};
 
         render: function () {
             this.$el.html(this.template(/*this.model.toJSON()*/));
+            $(function() {
+              $('.search-box').vegas({
+                slides: [
+                  { src: 'images/city0.jpg' },
+                  { src: 'images/city1.jpg' },
+                  { src: 'images/city2.jpg' }
+                ]
+              });
+            });
             return this;
         }
 
