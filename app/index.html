@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
         <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="bower_components/vegas/dist/vegas.min.css">
+        <link rel="stylesheet" href="bower_components/toastr/toastr.min.css"/>
 
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
@@ -61,7 +62,14 @@
         <script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
         <script src="bower_components/geolocator/src/geolocator.min.js"></script>
         <script src="bower_components/vegas/dist/vegas.min.js"></script>
+        <script src="bower_components/toastr/toastr.min.js"></script>
         <!-- endbuild -->
+
+        <!-- toastr customization -->
+        <script>  
+          toastr.options.progressBar = true;
+          toastr.options.preventDuplicates = true;
+        </script>
 
         <!--
           Google Maps API
