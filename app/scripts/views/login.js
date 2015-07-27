@@ -23,7 +23,7 @@ TriviaL.Views = TriviaL.Views || {};
         bean.email = bean.hostname;
         bean.password = $('#password').val();
 
-        var post = $.post('http://localhost:3000/api/hosts/login', bean);
+        var post = $.post('http://tylertracey.com:3000/api/hosts/login', bean);
 
         post.success(function(data) {
           new TriviaL.Views.Search();
