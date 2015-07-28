@@ -12,11 +12,32 @@ TriviaL.Views = TriviaL.Views || {};
       template: JST['app/scripts/templates/login.ejs'],
 
       events: {
-        "click #login-button" : "submit"
+        "click #login-button" : "login"
       },
 
-      submit: function() {
-        new TriviaL.Views.Home();
+      login: function() {
+        $('#login-button').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+
+        var bean = {};
+        bean.hostname = $('#username').val();
+        bean.email = bean.hostname;
+        bean.password = $('#password').val();
+
+        var post = $.post('http://tylertracey.com:3000/api/hosts/login', bean);
+
+        post.success(function(data) {
+          new TriviaL.Views.Search();
+          toastr.success('Login Successful', 'TriviaL');
+        });
+
+        post.fail(function() {
+          toastr.error('Login failed');
+        });
+
+        post.always(function() {
+          $('#login-button').html('login');
+        });
+
         return false;
       },
 
