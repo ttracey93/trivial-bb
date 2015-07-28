@@ -34,6 +34,7 @@ TriviaL.Views = TriviaL.Views || {};
             if(status == google.maps.GeocoderStatus.OK) {
                console.log(results[0]);
                //Send to /search for listings.
+               TriviaL.Routers.AppRouter.list(data);
             } else {
               console.log('Geocode was not successful.');
             }

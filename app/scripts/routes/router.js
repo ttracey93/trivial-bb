@@ -24,7 +24,7 @@ TriviaL.Routers = TriviaL.Routers || {};
           console.log("search view");
           new TriviaL.Views.Search();
         } ,
-        //Create a new account.
+        // Create a new account.
         register: function() {
           console.log("register view");
           new TriviaL.Views.Register();
@@ -37,6 +37,13 @@ TriviaL.Routers = TriviaL.Routers || {};
         // Host profile route
         host: function(url) {
           new TriviaL.Views.Host({ 'url': url });
+        },
+        // List all searched results.
+        list: function(data) {
+          new TriviaL.Views.List(data);
+        },
+        dashboard: function() {
+          new TriviaL.Views.Dashboard();
         }
     });
     // Initiate the router

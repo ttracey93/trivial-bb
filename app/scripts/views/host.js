@@ -11,7 +11,7 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/host.ejs'],
 
-        events: {},
+         events: {},
 
         initialize: function (options) {
           this.model = new TriviaL.Models.Host(options.url);
@@ -24,7 +24,7 @@ TriviaL.Views = TriviaL.Views || {};
 
         render: function () {
           console.log(this.model.attributes.host);
-          
+
           this.$el.html(this.template({
             'host': this.model.attributes.host,
             'profileImageUrl': 'http://imgur.com/' + this.model.attributes.host.profileImageId + '.jpg',

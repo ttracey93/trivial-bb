@@ -28,6 +28,8 @@ TriviaL.Views = TriviaL.Views || {};
         register: function(e) {
           if (this.confirmPassword()) {
             var data = this.getFormData();
+            //Send to server to create account.
+            this.createAccount();
           } else {
             var msg = "Passwords did not match.";
             this.formError(msg);
@@ -39,6 +41,7 @@ TriviaL.Views = TriviaL.Views || {};
           var url = "/register";
           $.post(url,data,function(json) {
             //Deal with response;
+            
           });
         },
 
@@ -68,10 +71,6 @@ TriviaL.Views = TriviaL.Views || {};
             .html(msg)
             .css('display','block');
         }
-//
-//border-bottom: 1px solid #F44336;
-//box-shadow: 0 1px 0 0 #F44336;
-//
     });
 
 })();
