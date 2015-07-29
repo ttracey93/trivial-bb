@@ -15,7 +15,7 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/dashboard.ejs'],
 
-        addTemplate: JST['app/scripts/templates/dashboard/add.ejs'],
+        addTemplate: JST['app/scripts/templates/addEvent.ejs'],
 
         events: {
           'click #dashboard': 'dashboard',
