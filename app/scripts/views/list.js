@@ -15,14 +15,12 @@ TriviaL.Views = TriviaL.Views || {};
 
         initialize: function (data) {
             //this.listenTo(this.model, 'change', this.render);
-            this.model = new TriviaL.Models.Event(data);
+            //this.model = new TriviaL.Models.Event(data);
             this.render();
         },
 
         render: function () {
-            this.$el.html(
-              /*this.template(this.model.toJSON())*/
-            );
+            this.$el.html(this.template(/*this.model.toJSON()*/));
         }
 
     });

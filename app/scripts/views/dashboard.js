@@ -19,8 +19,11 @@ TriviaL.Views = TriviaL.Views || {};
 
         events: {
           'click #dashboard': 'dashboard',
-          'click #add': 'addEvent',
-          'click #delete': 'deleteEvent'
+          'click #add': 'addEventView',
+          'submit #new-event': 'submitNewEvent',
+          'click #delete': 'deleteEvent',
+          'click #select-date': 'pickDate',
+          'click #select-time': 'pickTime'
         },
 
         initialize: function () {
@@ -34,15 +37,36 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         /* Event functions */
+        pickDate: function() {
+          $('.datepicker').pickadate(
+            {
+              closeOnSelect: true,
+              closeOnClear: true,
+            }
+          );
+        },
+
+        pickTime: function() {
+          $('.timepicker').pickatime(
+            {
+              min: '8:00AM'
+            }
+          );
+        },
 
         dashboard: function() {
           this.setActive('dashboard');
           $(this.main).html(this.render());
         },
 
-        addEvent: function() {
+        addEventView: function() {
           this.setActive('add');
           $(this.main).html(this.addTemplate());
+        },
+
+        submitNewEvent: function() {
+          console.log("hello");
+          return false;
         },
 
         deleteEvent: function() {
