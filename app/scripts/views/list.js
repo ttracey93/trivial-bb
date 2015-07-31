@@ -11,7 +11,9 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/list.ejs'],
 
-        events: {},
+        events: {
+          "click #list-date-picker": "pickDate"
+        },
 
         initialize: function (data) {
             //this.listenTo(this.model, 'change', this.render);
@@ -21,7 +23,17 @@ TriviaL.Views = TriviaL.Views || {};
 
         render: function () {
             this.$el.html(this.template(/*this.model.toJSON()*/));
-        }
+        },
+
+        /* Event functions */
+        pickDate: function(e) {
+          $('.datepickerList').pickadate(
+            {
+              closeOnSelect: true,
+              closeOnClear: true,
+            }
+          );
+        },
 
     });
 
