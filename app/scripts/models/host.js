@@ -8,7 +8,7 @@ TriviaL.Models = TriviaL.Models || {};
     TriviaL.Models.Host = Backbone.Model.extend({
 
         initialize: function(targetUrl) {
-          this.url = 'http://tylertracey.com:3000/api/hosts/' + targetUrl;
+          this.url = TriviaL.api + '/hosts/' + targetUrl;
         },
 
         defaults: {

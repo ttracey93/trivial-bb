@@ -15,6 +15,7 @@ TriviaL.Routers = TriviaL.Routers || {};
             "register": "register",
             "dashboard": "dashboard",
             "login": "login",
+            "signout": "signout",
             "hosts/:url": "host",
             "*actions": "defaultRoute"
             // matches http://example.com/#anything-here
@@ -33,6 +34,15 @@ TriviaL.Routers = TriviaL.Routers || {};
         login: function() {
           console.log('Will the real login route please stand up');
           new TriviaL.Views.Login();
+        },
+        // Signout route
+        signout: function() {
+          $('.logged-in').addClass('hide');
+          $('.logged-out').removeClass('hide');
+
+          toastr.info('User has logged out');
+
+          new TriviaL.Views.Search();
         },
         // Host profile route
         host: function(url) {

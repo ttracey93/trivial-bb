@@ -23,9 +23,17 @@ TriviaL.Views = TriviaL.Views || {};
         bean.email = bean.hostname;
         bean.password = $('#password').val();
 
-        var post = $.post('http://tylertracey.com:3000/api/hosts/login', bean);
+        var post = $.post(TriviaL.api + '/hosts/login', bean);
 
         post.success(function(data) {
+          $('.logged-in').removeClass('hide');
+          $('.logged-out').addClass('hide');
+
+          console.log(data);
+
+          $('#profile-link').html('Dubforce');
+          $('#profile-link').attr('href', '#/hosts/dubforce');
+
           new TriviaL.Views.Search();
           toastr.success('Login Successful', 'TriviaL');
         });

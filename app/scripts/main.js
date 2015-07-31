@@ -6,6 +6,7 @@ window.TriviaL = {
     Collections: {},
     Views: {},
     Routers: {},
+    api: 'http://localhost:3000/api',
     init: function () {
         'use strict';
         console.log('Hello from Backbone!');
