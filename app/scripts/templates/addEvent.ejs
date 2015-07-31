@@ -5,38 +5,38 @@
      <li class="collection-item">
         <div class="row">
           <div class="input-field col s12">
-            <input id="name" type="text" class="validate">
-            <label for="email">Event Name</label>
+            <input id="event-name" type="text" class="validate" required>
+            <label for="name">Event Name</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input id="address" type="text" class="validate">
-            <label for="email">Address</label>
+            <input id="event-address" type="text" class="validate" required>
+            <label for="address">Address</label>
           </div>
           <div class="input-field col s6">
-            <input id="city" type="text" class="validate">
-            <label for="email">City</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input id="state" type="text" class="validate">
-            <label for="email">State</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="zip" type="text" class="validate">
-            <label for="email">Zip</label>
+            <input id="event-city" type="text" class="validate" required>
+            <label for="city">City</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input id="select-date" type="text" class="datepicker">
-            <label class="active" for="start">Date</label>
+            <input id="event-state" type="text" class="validate" required>
+            <label for="state">State</label>
           </div>
           <div class="input-field col s6">
-            <input id="select-time" type="text" class="timepicker">
-            <label class="active" for="start">Time</label>
+            <input id="event-zip" type="text" class="validate" required>
+            <label for="zip">Zip</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="select-date" type="text" class="datepicker" required>
+            <label class="active" for="date">Date</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="select-time" type="text" class="timepicker" required>
+            <label class="active" for="time">Time</label>
           </div>
         </div>
         <div class="row">

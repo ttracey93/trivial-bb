@@ -7,20 +7,22 @@ TriviaL.Models = TriviaL.Models || {};
 
     TriviaL.Models.Event = Backbone.Model.extend({
 
-        id: '',
-        host: '',
-        category: '',
-        address: '',
-        city: '',
-        state: '',
-        zip: '',
-        url: '',
+        url: 'event',
+
+        defaults: {
+          id: '',
+          host: 'Test',
+          date: '',
+          time: '',
+          address: '',
+          city: '',
+          state: '',
+          zip: ''
+        },
 
         initialize: function() {
         },
 
-        defaults: {
-        },
 
         validate: function(attrs, options) {
         },

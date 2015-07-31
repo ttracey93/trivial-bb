@@ -65,8 +65,23 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         submitNewEvent: function() {
-          console.log("hello");
+          var data = this._getNewEventData();
+          var event = new TriviaL.Models.Event(data);
+          console.log(event);
           return false;
+        },
+
+        _getNewEventData: function() {
+          var input = {
+            name: $("#event-name").val(),
+            address: $("#event-address").val(),
+            city: $("#event-city").val(),
+            state: $("#event-state").val(),
+            zip: $("#event-zip").val(),
+            date: $("#select-date").val(),
+            time: $("#select-time").val()
+          }
+          return input;
         },
 
         deleteEvent: function() {
