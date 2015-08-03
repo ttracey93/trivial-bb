@@ -1,6 +1,8 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
+
+
         <meta charset="utf-8">
         <title>TriviaL</title>
         <meta name="description" content="">
@@ -17,7 +19,20 @@
         <link rel="stylesheet" href="bower_components/toastr/toastr.min.css"/>
 
         <!-- build:css(.tmp) styles/main.css -->
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="styles/css/app.css">
+        <style>
+          .brand-logo{
+            margin-left: 50px;
+            font-family: 'Pacifico', cursive;
+          }
+          .menu {
+            margin-right: 50px;
+          }
+          a:hover{
+            color: #ffab40;
+          }
+        </style>
         <!-- endbuild -->
     </head>
     <body>
@@ -27,9 +42,9 @@
 
         <div class="navbar-fixed">
           <nav>
-            <div class="nav-wrapper blue accent-2">
+            <div class="nav-wrapper blue lighten-1">
               <a href="#" class="brand-logo">TriviaL</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <ul id="nav-mobile" class="right hide-on-med-and-down menu">
                 <li><a href="#/">Home</a></li>
                 <li><a href="#/search">Search</a></li>
                 <li><a href="#/dashboard" class="logged-in hide">Dashboard</a></li>

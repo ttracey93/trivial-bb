@@ -1,30 +1,49 @@
 <div class="row center-align">
-  <h3>Login</h3>
 
-  <form>
-    <div class="row">
-      <div class="input-field col s6 offset-s3">
-        <input type="text" id="username" />
-        <label for="username">Username</label>
+  <div class="row" style="margin-top:3%;">
+    <div class="col s4 m8 l4 offset-s4 offset-m2 offset-l4">
+      <div class="card">
+        <div class="card-content blue-text">
+          <span class="card-title blue-text">Login</span>
+
+          <form>
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" id="username" />
+                <label for="username"><i class="fa fa-user"></i> Username</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="password" id="password" />
+                <label for="password"><i class="fa fa-key"></i> Password</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12"">
+                <button style="width:100%;" type="submit" id="login-button" class="waves-effect blue lighten-1 waves-light btn">Login</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <div class="card-action">
+          <div class="row">
+            <div>
+
+              <div class="col s12">
+                <a href="">
+                  Forgot your password?
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="input-field col s6 offset-s3">
-        <input type="password" id="password" />
-        <label for="password">Password</label>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s3 offset-s3">
-        <input type="checkbox" id="remember_me" checked />
-        <label for="remember_me">Remember me</label>
-      </div>
-
-      <div class="col s3">
-        <button type="submit" id="login-button" class="waves-effect blue lighten-1 waves-light btn">Login</button>
-      </div>
-    </div>
-  </form>
+  </div>
 </div>
