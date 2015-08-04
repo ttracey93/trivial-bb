@@ -12,7 +12,7 @@ TriviaL.Views = TriviaL.Views || {};
         template: JST['app/scripts/templates/search.ejs'],
 
         //Create a google map geocoder object
-        geocoder: new google.maps.Geocoder(),
+        //geocoder: new google.maps.Geocoder(),
 
         events: {
           "submit": "search"
@@ -24,7 +24,7 @@ TriviaL.Views = TriviaL.Views || {};
              * @param {function} setUpHTML5Location - Called on success.
              * @param {function} setUpHTML5Location - Called on success.
              */
-            geolocator.locate(this.setUpHTML5Location);
+            //geolocator.locate(this.setUpHTML5Location);
             this.render();
         },
 

@@ -2,3 +2,18 @@
 @import "materialize/sass/materialize";
 
 @import "global";
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#view {
+  width: 100% !important;
+  height: 100% !important;
+}

@@ -18,7 +18,6 @@ body {
 }
 
 .search-box {
-  position: absolute; top: 0; left: 0;
   width: 100%;
   background-color: #000;
   background-size: 100% 100%;
@@ -39,8 +38,7 @@ body {
 }
 
 .search-card {
-  margin-left: 33% !important;
-  margin-top: 10%;
+  margin: auto;
 }
 
 /* Begin Materialize Overrides */
