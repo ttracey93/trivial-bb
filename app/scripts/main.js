@@ -9,9 +9,8 @@ window.TriviaL = {
     api: 'http://localhost:3000/api',
     init: function () {
         'use strict';
-        console.log('Hello from Backbone!');
 
-        //new this.Views.Login();
+        this.Views.navbar = new this.Views.Navbar();
     }
 };
 

@@ -28,31 +28,53 @@ TriviaL.Views = TriviaL.Views || {};
         register: function(e) {
           if (this.confirmPassword()) {
             var data = this.getFormData();
+
             //Send to server to create account.
-            this.createAccount();
-          } else {
-            var msg = "Passwords did not match.";
-            this.formError(msg);
-            return false;
+            this.createAccount(data);
           }
+          else {
+            toastr.error('Passwords must match');
+          }
+
+          return false;
         },
 
-        createAccount: function(data) {
-          var url = "/register";
-          $.post(url,data,function(json) {
+        createAccount: function(bean) {
+          var url = TriviaL.api + "/hosts/register";
+
+          var post = $.post(url, bean, function(data) {
             //Deal with response;
-            
+            $('.logged-in').removeClass('hide');
+            $('.logged-out').addClass('hide');
+
+            $.ajaxSetup({ 'token': data.token });
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('hostInfo', JSON.stringify(data.host));
+
+            $('#profile-link').html(data.host.hostname);
+            $('#profile-link').attr('href', '#/hosts/' + data.host.url);
+
+            new TriviaL.Views.Dashboard();
+            toastr.success('Registration Successful', 'TriviaL');
+          });
+
+          post.error(function(xhr) {
+            console.log(xhr.responseJSON);
+
+            xhr.responseJSON.errors.forEach(function(error) {
+              console.log(error);
+              toastr.error(error);
+            });
           });
         },
 
         getFormData: function() {
-          var data = {
+          return {
             hostname: $("#hostname").val(),
             url: $("#url").val(),
             email: $("#email").val(),
             password: $("#password").val()
           };
-          return data;
         },
 
         confirmPassword: function() {

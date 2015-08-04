@@ -39,26 +39,13 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        <div class="navbar-fixed">
-          <nav>
-            <div class="nav-wrapper blue lighten-1">
-              <a href="#" class="brand-logo">TriviaL</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down menu">
-                <li><a href="#/">Home</a></li>
-                <li><a href="#/search">Search</a></li>
-                <li><a href="#/dashboard" class="logged-in hide">Dashboard</a></li>
-                <li><a href="#/register" class="logged-out">Register</a></li>
-                <li><a href="#/login" class="logged-out">Login</a></li>
-                <li><a href="#/signout" class="logged-in hide">Signout</a><li>
-                <li><a id="profile-link" class="logged-in hide"></a><li>
-              </ul>
-            </div>
-          </nav>
+        
+        <div id="navbar">
+          <!-- Navbar partial -->
         </div>
 
         <div id="view">
-          <!-- Where our To Do app will go -->
+          <!-- Main application view -->
         </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -123,6 +110,7 @@
         <script src="scripts/views/list.js"></script>
         <script src="scripts/views/dashboard.js"></script>
         <script src="scripts/collections/events.js"></script>
+        <script src="scripts/views/navbar.js"></script>
         <!-- endbuild -->
 </body>
 </html>

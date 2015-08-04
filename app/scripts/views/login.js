@@ -29,12 +29,14 @@ TriviaL.Views = TriviaL.Views || {};
           $('.logged-in').removeClass('hide');
           $('.logged-out').addClass('hide');
 
-          console.log(data);
+          $.ajaxSetup({ 'token': data.token });
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('hostInfo', JSON.stringify(data.host));
 
-          $('#profile-link').html('Dubforce');
-          $('#profile-link').attr('href', '#/hosts/dubforce');
+          $('#profile-link').html(data.host.hostname);
+          $('#profile-link').attr('href', '#/hosts/' + data.host.url);
 
-          new TriviaL.Views.Search();
+          new TriviaL.Views.Dashboard();
           toastr.success('Login Successful', 'TriviaL');
         });
 

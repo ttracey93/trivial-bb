@@ -20,7 +20,7 @@ TriviaL.Views = TriviaL.Views || {};
         events: {
           'click #dashboard': 'dashboard',
           'click #add': 'addEventView',
-          'submit #new-event': 'submitNewEvent',
+          'submit #add-event': 'submitNewEvent',
           'click #delete': 'deleteEvent',
           'click #select-date': 'pickDate',
           'click #select-time': 'pickTime'
@@ -32,7 +32,7 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         render: function () {
-            this.$el.html(this.template(/*this.model.toJSON()*/));
+            this.$el.html(this.template({ 'hostInfo': JSON.parse(localStorage.getItem('hostInfo')) }));
             return this;
         },
 
@@ -67,8 +67,18 @@ TriviaL.Views = TriviaL.Views || {};
         submitNewEvent: function() {
           var data = this._getNewEventData();
           var event = new TriviaL.Models.Event(data);
-          console.log(event);
+          event.save({}, success, error);
           return false;
+
+          function success(model, response) {
+            console.log('event was saved successfully');
+            toastr.success('Event was saved');
+          }
+
+          function error(model, response) {
+            console.log('event save did not succeed');
+            toastr.error('Event could not be saved.');
+          }
         },
 
         _getNewEventData: function() {

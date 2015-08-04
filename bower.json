@@ -9,7 +9,8 @@
     "backbone.localStorage": "~1.1.16",
     "fontawesome": "~4.3.0",
     "materialize": "~0.97.0",
-    "geolocator": "~1.2.9"
+    "geolocator": "~1.2.9",
+    "pickadate": "~3.5.6"
   },
   "devDependencies": {
     "chai": "~3.2.0",

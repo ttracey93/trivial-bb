@@ -23,6 +23,12 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         render: function () {
+          var host = this.model.attributes.host;
+          var profileImageUrl = host.profileImageId ? 'http://imgur.com/' + host.profileImageId + '.jpg' :
+            'http://placehold.it/350x150';
+          var bannerImageUrl = host.bannerImageId ? 'http://imgur.com/' + host.bannerImageId + '.jpg' : 
+            'http://placehold.it/350x150';
+
           this.$el.html(this.template({
             'host': this.model.attributes.host,
             'profileImageUrl': 'http://imgur.com/' + this.model.attributes.host.profileImageId + '.jpg',

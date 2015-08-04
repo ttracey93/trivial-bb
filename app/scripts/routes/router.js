@@ -5,8 +5,6 @@ TriviaL.Routers = TriviaL.Routers || {};
 (function () {
     'use strict';
 
-    console.log('This is definitely running');
-
     TriviaL.Routers.AppRouter = Backbone.Router.extend({
         routes: {
             "": "search",
@@ -20,38 +18,61 @@ TriviaL.Routers = TriviaL.Routers || {};
             "*actions": "defaultRoute"
             // matches http://example.com/#anything-here
         } ,
+
         // Search router event.
         search: function() {
-          console.log("search view");
-          new TriviaL.Views.Search();
+          if(TriviaL.Views.search) {
+            TriviaL.Views.search.render();
+          }
+          else {
+            TriviaL.Views.search = new TriviaL.Views.Search();
+          }
         } ,
+
         // Create a new account.
         register: function() {
-          console.log("register view");
-          new TriviaL.Views.Register();
+          if(TriviaL.Views.register) {
+            TriviaL.Views.register.render();
+          }
+          else {
+            TriviaL.Views.register = new TriviaL.Views.Register();
+          }
         },
+
         // Login router event.
         login: function() {
-          console.log('Will the real login route please stand up');
-          new TriviaL.Views.Login();
+          if(TriviaL.Views.login) {
+            TriviaL.Views.login.render();
+          }
+          else {
+            TriviaL.Views.login = new TriviaL.Views.Login();
+          }
         },
+
         // Signout route
         signout: function() {
           $('.logged-in').addClass('hide');
           $('.logged-out').removeClass('hide');
 
-          toastr.info('User has logged out');
+          localStorage.removeItem('token');
+          localStorage.removeItem('hostInfo');
+          delete $.ajaxSettings.token;
 
-          new TriviaL.Views.Search();
+          this.search();
+          toastr.info('Host has logged out');
         },
+
         // Host profile route
         host: function(url) {
-          new TriviaL.Views.Host({ 'url': url });
+          TriviaL.Views.host = new TriviaL.Views.Host({ 'url': url });
         },
+
         // List all searched results.
         list: function(data) {
           new TriviaL.Views.List(data);
         },
+
+        // Host dashboard
         dashboard: function() {
           new TriviaL.Views.Dashboard();
         }
