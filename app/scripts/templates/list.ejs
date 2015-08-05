@@ -4,20 +4,56 @@
   <div id="dashboard-nav" class="col s2">
     <!-- Grey navigation panel -->
     <div id="dashboard-links" class="collection" >
-      <p> <i class="fa fa-bars"></i> Search Menu</p>
-      <hr>
+
+    <p> 2,345 Results Found</p>
       <div class="row">
        <div class="input-field col s12">
          <input value="" id="first_name2" type="text" class="validate">
          <label for="first_name2">Seach</label>
        </div>
      </div>
+    <ul class="collapsible" data-collapsible="accordion">
+     <li>
+       <div class="collapsible-header">Date</div>
+       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+     </li>
+     <li>
+       <div class="collapsible-header">Range</div>
+       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+     </li>
+     <li>
+       <div class="collapsible-header">Category</div>
+       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+     </li>
+    </ul>
+
+
+    <!--
+
+    <p>  Search Menu</p>
+      <br>
+      <div class="row">
+       <div class="input-field col s12">
+         <input value="" id="first_name2" type="text" class="validate">
+         <label for="first_name2">Seach</label>
+       </div>
+     </div>
+     <p>  Date filter</p>
+     <br>
     <div class="row">
      <div class="input-field col s12">
-       <input id="list-date-picker" type="text" class="datepickerList">
-       <label class="active" for="start">Date</label>
+       <input id="list-date-picker" type="date">
+       <label class="active" for="start">State Date</label>
      </div>
    </div>
+   <div class="row">
+    <div class="input-field col s12">
+      <input id="list-date-picker" type="date">
+      <label class="active" for="start">End Date</label>
+    </div>
+  </div>
+   <p>  Refine by</p>
+   <br>
     <div class="row">
      <div class="input-field col s12">
       <p>Categories</p>
@@ -44,6 +80,7 @@
      </div>
    </div>
 
+   -->
     </div>
   </div>
 
@@ -53,38 +90,40 @@
     <div class="row">
 
       <ul class="collection">
-       <li class="collection-item avatar">
-         <i class="material-icons circle">folder</i>
-         <span class="title">Title</span>
-         <p>First Line <br>
-            Second Line
-         </p>
-         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-       </li>
-       <li class="collection-item avatar">
-         <i class="material-icons circle">folder</i>
-         <span class="title">Title</span>
-         <p>First Line <br>
-            Second Line
-         </p>
-         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-       </li>
-       <li class="collection-item avatar">
-         <i class="material-icons circle green">insert_chart</i>
-         <span class="title">Title</span>
-         <p>First Line <br>
-            Second Line
-         </p>
-         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-       </li>
-       <li class="collection-item avatar">
-         <i class="material-icons circle red">play_arrow</i>
-         <span class="title">Title</span>
-         <p>First Line <br>
-            Second Line
-         </p>
-         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-       </li>
+
+        <% for(var i=0; i<data.length; i++) {%>
+
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title">
+              <a href="">
+                <%= data.models[i].attributes.name %>
+              </a>
+              hosted by
+              <a href="#/hosts/<%= data.models[i].attributes.host %>">
+                <i class="fa fa-user"></i>
+                <%= data.models[i].attributes.host %>
+              </a>
+            </span>
+            <p>
+              <%= data.models[i].attributes.address %> <br>
+              <%= data.models[i].attributes.city %>,
+              <%= data.models[i].attributes.state %>
+              <%= data.models[i].attributes.zip %>
+            </p>
+            <br>
+            <p class="event-desc">
+              Visit this awesome place to play trivia. We have BOGO beer deals.
+              This is some dope ass shit, I mean who doesn't love trivia.
+            </p>
+            <p class="secondary-content">
+              Starts at <%= data.models[i].attributes.time %>
+              on  <%= data.models[i].attributes.date %>
+            </p>
+          </li>
+
+        <% } %>
+
      </ul>
 
     <div>

@@ -20,19 +20,18 @@ TriviaL.Views = TriviaL.Views || {};
             //this.model = new TriviaL.Models.Event(data);
 
             //Get test data.
-            var testData = {"name":"Event2","host":"Superfly","address":"42 Moonland Street","city":"Orlando","state":"Florida","zip":"54487","date":"December, 1 2011","time":"3:40PM"};
+            var testData = {"name":"Event2","host":"dubforce","address":"42 Moonland Street","city":"Orlando","state":"Florida","zip":"54487","date":"December, 1 2011","time":"3:40PM"};
             //Create model.
             var event = new TriviaL.Models.Event(testData);
             //Create collection.
-            this.events = new TriviaL.Collections.Events(event);
-
-            console.log(this.events);
+            this.eventsCollection = new TriviaL.Collections.Events(event);
 
             this.render();
         },
 
         render: function () {
-            this.$el.html(this.template(/*this.model.toJSON()*/));
+            //Passing in the collection of events.
+            this.$el.html(this.template( { data: this.eventsCollection } ));
         },
 
         /* Event functions */

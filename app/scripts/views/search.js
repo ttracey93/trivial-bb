@@ -12,7 +12,7 @@ TriviaL.Views = TriviaL.Views || {};
         template: JST['app/scripts/templates/search.ejs'],
 
         //Create a google map geocoder object
-        //geocoder: new google.maps.Geocoder(),
+        geocoder: new google.maps.Geocoder(),
 
         events: {
           "submit": "search"
@@ -24,7 +24,7 @@ TriviaL.Views = TriviaL.Views || {};
              * @param {function} setUpHTML5Location - Called on success.
              * @param {function} setUpHTML5Location - Called on success.
              */
-            //geolocator.locate(this.setUpHTML5Location);
+            geolocator.locate(this.setUpHTML5Location);
             this.render();
         },
 
@@ -34,7 +34,12 @@ TriviaL.Views = TriviaL.Views || {};
             if(status == google.maps.GeocoderStatus.OK) {
                console.log(results[0]);
                //Send to /search for listings.
-               TriviaL.Routers.AppRouter.list(data);
+
+               //Don't think this works because the function list is
+               // out of the scope.
+               //TriviaL.Routers.AppRouter.list(results[0]);
+
+               new TriviaL.Views.List(results[0]);
             } else {
               console.log('Geocode was not successful.');
             }
