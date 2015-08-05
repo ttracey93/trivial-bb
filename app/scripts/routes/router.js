@@ -15,6 +15,7 @@ TriviaL.Routers = TriviaL.Routers || {};
             "login": "login",
             "signout": "signout",
             "hosts/:url": "host",
+            "events/:id": "event",
             "*actions": "defaultRoute"
             // matches http://example.com/#anything-here
         } ,
@@ -74,7 +75,30 @@ TriviaL.Routers = TriviaL.Routers || {};
 
         // Host dashboard
         dashboard: function() {
-          new TriviaL.Views.Dashboard();
+          if(localStorage.getItem('token') != null) {
+            console.log('Token is not null, displaying dashboard');
+
+            if(TriviaL.Views.dashboard) {
+              TriviaL.Views.dashboard.render();
+            }
+            else {
+              TriviaL.Views.dashboard = new TriviaL.Views.Dashboard();
+            }
+          }
+          else {
+            console.log('Token IS null, redirecting and informing');
+            toastr.error('You must log in');
+            this.login();
+          }
+        },
+
+        event: function(id) {
+          if(TriviaL.Views.event) {
+            TriviaL.Views.event.render();
+          }
+          else {
+            TriviaL.Views.event = new TriviaL.Views.Event(id);
+          }
         }
     });
     // Initiate the router

@@ -20,7 +20,7 @@ TriviaL.Views = TriviaL.Views || {};
         events: {
           'click #dashboard': 'dashboard',
           'click #add': 'addEventView',
-          'submit #add-event': 'submitNewEvent',
+          'submit #new-event': 'submitNewEvent',
           'click #delete': 'deleteEvent',
           'click #select-date': 'pickDate',
           'click #select-time': 'pickTime'
@@ -66,23 +66,25 @@ TriviaL.Views = TriviaL.Views || {};
 
         submitNewEvent: function() {
           var data = this._getNewEventData();
-          var event = new TriviaL.Models.Event(data);
-          event.save({}, success, error);
+          var post = $.post(TriviaL.api + '/events', data, success);
+          post.error(error);
           return false;
 
-          function success(model, response) {
+          function success(json) {
             console.log('event was saved successfully');
             toastr.success('Event was saved');
+            console.log(json);
           }
 
-          function error(model, response) {
+          function error(xhr) {
             console.log('event save did not succeed');
             toastr.error('Event could not be saved.');
+            console.log(xhr);
           }
         },
 
         _getNewEventData: function() {
-          var input = {
+          return {
             name: $("#event-name").val(),
             address: $("#event-address").val(),
             city: $("#event-city").val(),
@@ -91,7 +93,6 @@ TriviaL.Views = TriviaL.Views || {};
             date: $("#select-date").val(),
             time: $("#select-time").val()
           }
-          return input;
         },
 
         deleteEvent: function() {
