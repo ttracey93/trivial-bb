@@ -30,6 +30,7 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         render: function () {
+
             //Passing in the collection of events.
             this.$el.html(this.template( { data: this.eventsCollection } ));
         },

@@ -8424,6 +8424,10 @@ body {
   width: 100% !important;
   height: 100% !important; }
 
+.top-margin {
+  margin-top: 3%; }
+
 #view {
+  position: fixed;
   width: 100% !important;
   height: 100% !important; }
