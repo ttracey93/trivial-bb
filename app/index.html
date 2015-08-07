@@ -12,16 +12,16 @@
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
 
-        <!-- Custom dependencies -->
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="bower_components/vegas/dist/vegas.min.css">
-        <link rel="stylesheet" href="bower_components/toastr/toastr.min.css"/>
-
         <!-- build:css(.tmp) styles/main.css -->
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="styles/css/app.css">
+
+        <!-- Custom dependencies -->
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/vegas/dist/vegas.min.css">
+
         <style>
           .brand-logo{
             margin-left: 50px;
@@ -94,8 +94,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
+        
         <script src="scripts/main.js"></script>
         <script src="scripts/templates.js"></script>
+
+        <!-- Services -->
+        <script src="scripts/services/login.js"></script>
+        <!-- End Services -->
+
         <script src="scripts/collections/todos.js"></script>
         <script src="scripts/models/todo.js"></script>
         <script src="scripts/views/todos.js"></script>

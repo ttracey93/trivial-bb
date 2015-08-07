@@ -18,35 +18,12 @@ TriviaL.Views = TriviaL.Views || {};
       login: function() {
         $('#login-button').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
 
-        var bean = {};
-        bean.hostname = $('#username').val();
-        bean.email = bean.hostname;
-        bean.password = $('#password').val();
+        var data = {};
+        data.hostname = $('#username').val();
+        data.email = data.hostname;
+        data.password = $('#password').val();
 
-        var post = $.post(TriviaL.api + '/hosts/login', bean);
-
-        post.success(function(data) {
-          $('.logged-in').removeClass('hide');
-          $('.logged-out').addClass('hide');
-
-          $.ajaxSetup({ 'token': data.token });
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('hostInfo', JSON.stringify(data.host));
-
-          $('#profile-link').html(data.host.hostname);
-          $('#profile-link').attr('href', '#/hosts/' + data.host.url);
-
-          new TriviaL.Views.Dashboard();
-          toastr.success('Login Successful', 'TriviaL');
-        });
-
-        post.fail(function() {
-          toastr.error('Login failed');
-        });
-
-        post.always(function() {
-          $('#login-button').html('login');
-        });
+        TriviaL.Services.Login(data);
 
         return false;
       },
