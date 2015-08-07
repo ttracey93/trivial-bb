@@ -16,6 +16,7 @@ TriviaL.Routers = TriviaL.Routers || {};
             "signout": "signout",
             "hosts/:url": "host",
             "events/:id": "event",
+            "events/:id/edit": "editEvent",
             "*actions": "defaultRoute"
             // matches http://example.com/#anything-here
         } ,
@@ -99,8 +100,26 @@ TriviaL.Routers = TriviaL.Routers || {};
           else {
             TriviaL.Views.event = new TriviaL.Views.Event(id);
           }
+        },
+
+        editEvent: function(id) {
+          if(TriviaL.Views.editEvent) {
+            TriviaL.Views.editEvent.render();
+          }
+          else {
+            TriviaL.Views.editEvent = new TriviaL.Views.EditEvent(id);
+          }
         }
     });
     // Initiate the router
-    var router = new TriviaL.Routers.AppRouter;
+
+    //var router = new TriviaL.Routers.AppRouter;
+
+    /*
+     * Changed by Will Lewis.
+     * I couldn't access the route's methods to change pages from the view classes
+     * Saw a lot of people on stackover flow set up the router as a global.
+     */
+    window.router = new TriviaL.Routers.AppRouter;
+
 })();

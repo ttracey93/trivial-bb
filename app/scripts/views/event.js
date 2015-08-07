@@ -11,9 +11,12 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/event.ejs'],
 
-        events: {},
+        events: {
+          'click #edit-event-btn': 'editEvent'
+        },
 
         initialize: function (id) {
+            this.eventId = id;
             this.model = new TriviaL.Models.Event(id);
             this.model.fetch();
 
@@ -25,6 +28,12 @@ TriviaL.Views = TriviaL.Views || {};
         render: function () {
             console.log(this.model.toJSON());
             this.$el.html(this.template(this.model.toJSON()));
+        },
+
+        editEvent: function() {
+          var url = "#/events/" + this.eventId + "/edit";
+          window.router.navigate(url, {trigger: true})
+          //window.router.editEvent(this.eventId);
         }
 
     });

@@ -1,0 +1,47 @@
+<div class="row ">
+
+  <div class="row top-margin">
+    <div class="col s4 m8 l6 offset-s4 offset-m2 offset-l3">
+      <div class="card">
+        <div class="card-content blue-text">
+          <span class="card-title blue-text">Edit Event: <%=name%></span>
+          <a id="return-to-event" class="waves-effect waves-light btn">Back</a>
+
+          <form id="edit-event">
+            <div class="input-field col s6">
+              <input id="edit-name" type="text" value="<%=name%>" class="validate" required>
+              <label class="active"> Event Name</label>
+            </div>
+
+           <div class="input-field col s6 ">
+             <input id="edit-dateTime" type="text" value="<%=dateTime%>" class="validate" required>
+             <label class="active">Date</label>
+           </div>
+
+           <div class="input-field col s12">
+             <input id="edit-address" type="text" value="<%=address%>" class="validate" required>
+             <label class="active"> Address</label>
+           </div>
+
+            <div class="input-field col s12">
+              <input id="edit-city" type="text" value="<%=city%>" class="validate" required>
+              <label class="active"> City</label>
+            </div>
+
+            <div class="input-field col s12">
+              <input id="edit-state" type="text" value="<%=state%>" class="validate" required>
+              <label class="active"> State</label>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <button style="width:100%;" type="submit" id="register-button" class="waves-effect blue lighten-1 waves-light btn">Sign up</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
