@@ -7,17 +7,18 @@ TriviaL.Routers = TriviaL.Routers || {};
 
     TriviaL.Routers.AppRouter = Backbone.Router.extend({
         routes: {
-            "": "search",
-            "search": "list",
-            "about": "about",
-            "register": "register",
-            "dashboard": "dashboard",
-            "login": "login",
-            "signout": "signout",
-            "hosts/:url": "host",
-            "events/:id": "event",
-            "events/:id/edit": "editEvent",
-            "*actions": "defaultRoute"
+            '': 'search',
+            'search': 'list',
+            'about': 'about',
+            'register': 'register',
+            'dashboard': 'dashboard',
+            'login': 'login',
+            'signout': 'signout',
+            'hosts/:url': 'host',
+            'hosts/:url/edit': 'editHost',
+            'events/:id': 'event',
+            'events/:id/edit': 'editEvent',
+            '*actions': 'defaultRoute'
             // matches http://example.com/#anything-here
         } ,
 
@@ -67,6 +68,15 @@ TriviaL.Routers = TriviaL.Routers || {};
         // Host profile route
         host: function(url) {
           TriviaL.Views.host = new TriviaL.Views.Host({ 'url': url });
+        },
+
+        editHost: function(url) {
+          if(TriviaL.Views.editHost) {
+            TriviaL.Views.editHost.render();
+          }
+          else {
+            TriviaL.Views.editHost = new TriviaL.Views.EditHost(url);
+          }
         },
 
         // List all searched results.

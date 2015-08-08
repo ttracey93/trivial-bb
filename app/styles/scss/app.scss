@@ -19,6 +19,7 @@ body {
 }
 
 #view {
+  overflow: auto;
   position: fixed;
   width: 100% !important;
   height: 100% !important;
