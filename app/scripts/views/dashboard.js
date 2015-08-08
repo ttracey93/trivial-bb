@@ -15,6 +15,8 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/dashboard.ejs'],
 
+        eventTemplate: JST['app/scripts/templates/host-event.ejs'],
+
         addTemplate: JST['app/scripts/templates/addEvent.ejs'],
 
         events: {
@@ -32,7 +34,26 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         render: function () {
-            this.$el.html(this.template({ 'hostInfo': JSON.parse(localStorage.getItem('hostInfo')) }));
+            var host = JSON.parse(localStorage.getItem('hostInfo'));
+
+            this.$el.html(this.template({
+              'hostInfo': host
+            }));
+
+            var events = new TriviaL.Collections.Events(host.hostname);
+            events.fetch();
+
+            var eventTemplate = this.eventTemplate;
+            var hostEvents = $('#host-events');
+
+            events.on('sync', function() {
+              events.models.forEach(function(event) {
+                var data = event.attributes;
+
+                hostEvents.append(eventTemplate(data));
+              });
+            });
+
             return this;
         },
 
@@ -65,7 +86,10 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         submitNewEvent: function() {
+          var host = JSON.parse(localStorage.getItem('hostInfo'));
           var data = this._getNewEventData();
+          data.host = host;
+
           var post = $.post(TriviaL.api + '/events', data, success);
           post.error(error);
           return false;

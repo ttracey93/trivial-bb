@@ -7,7 +7,20 @@ TriviaL.Collections = TriviaL.Collections || {};
 
     TriviaL.Collections.Events = Backbone.Collection.extend({
 
-        model: TriviaL.Models.Event
+        el: '#host-events',
+
+        model: TriviaL.Models.Event,
+
+        template: JST['app/scripts/templates/host-events.ejs'],
+
+        initialize: function(owner) {
+            this.url = TriviaL.api + '/events/byOwner/' + owner;
+        },
+
+        parse: function(response) {
+          console.log(response);
+          return response.events;
+        }
 
     });
 
