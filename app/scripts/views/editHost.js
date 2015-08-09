@@ -17,7 +17,8 @@ TriviaL.Views = TriviaL.Views || {};
           "click #email-edit-link": 'editEmail',
           "click #events-edit-link": 'editEvents',
           "submit #profile-settings-form": 'setProfile',
-          "submit #email-settings-form": 'setEmail'
+          "submit #email-settings-form": 'setEmail',
+          "submit #account-settings-form": 'setAccount'
         },
 
         initialize: function (url) {
@@ -55,7 +56,7 @@ TriviaL.Views = TriviaL.Views || {};
 
         editAccount: function() {
           this._changeActiveLink('account-edit-link');
-          this._changeEditForm('accout-settings-form');
+          this._changeEditForm('account-settings-form');
         },
 
         editEmail: function() {
@@ -68,23 +69,42 @@ TriviaL.Views = TriviaL.Views || {};
           this._changeEditForm('events-settings-form');
         },
 
-        _getProfileData: function() {
-          return {
-            profileImage: $('#host-profile-image').val(),
-            bannerImage: $('#host-banner-image').val(),
-            company: $('#host-company-name').val(),
-            location: $('#host-location').val(),
-            description: $('#host-description').val()
+        /*
+         * Deals with sending data to server.
+         */
+
+        setProfile: function() {
+          var settings = {
+            settings: {
+              profile: $("#profile-settings-form").serializeArray() //this._getProfileData()
+            }
           };
+
+          console.log(settings);
+          this.model.set(settings);
+          console.log(this.model);
+          //this.model.save({patch: true});
+          return false;
         },
 
-        _getEmailData: function() {
-          return {
-            email: $('#host-email-address').val(),
-            private: $('#private-check').val(),
-            notifications: $('#email-notifications').val()
-          };
+        setEmail: function() {
+          var settings = {
+            settings: {
+              email: $("#email-settings-form").serializeArray()
+            }
+          }
+          this.model.set(settings);
+          console.log(this.model);
+          return false;
         },
+
+        setAccount: function() {
+
+        },
+
+        /*
+         * Private methods.
+         */
 
         _changeActiveLink: function(id) {
           //Remove active link.

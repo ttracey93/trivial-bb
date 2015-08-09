@@ -8,7 +8,7 @@
         <ul id='setting-links' class='collection with-header'>
           <li class='collection-header'><h5>Personal Settings</h5></li>
           <a href='javascript:void(0)' id='profile-edit-link' class='collection-item active'>Profile</a>
-          <a href='javascript:void(0)' id='account-edit-link' class='collection-item'>Account Settings</a>
+          <a href='javascript:void(0)' id='account-edit-link' class='collection-item'>Account</a>
           <a href='javascript:void(0)' id='email-edit-link' class='collection-item'>Email</a>
           <a href='javascript:void(0)' id='events-edit-link' class='collection-item'>Events</a>
         </ul>
@@ -31,7 +31,7 @@
                     <div class='input-field col s8'>
                       <p>Select a file on your computer to upload.</p>
                       <br>
-                      <input id='host-profile-image' type='file' class='validate'>
+                      <input name="host-profile-image" id='host-profile-image' type='file' class='validate'>
                     </div>
                   </div>
                   <div class='row'>
@@ -41,24 +41,24 @@
                     <div class='input-field col s6'>
                       <p>Select a file on your computer to upload.</p>
                       <br>
-                      <input id='host-banner-image' type='file' class='validate'>
+                      <input name="host-banner-image" id='host-banner-image' type='file' class='validate'>
                     </div>
                   </div>
                   <div class='row'>
                     <div class='input-field col s12'>
-                      <input id='host-company-name' type='text' class='validate'>
+                      <input name="host-company-name" id='host-company-name' type='text' class='validate'>
                       <label>Company</label>
                     </div>
                   </div>
                   <div class='row'>
                     <div class='input-field col s12'>
-                      <input id='host-location' type='text' class='validate'>
+                      <input name="host-location" id='host-location' type='text' class='validate'>
                       <label>location</label>
                     </div>
                   </div>
                   <div class='row'>
                     <div class='input-field col s12'>
-                      <textarea id='host-description' class='materialize-textarea'></textarea>
+                      <textarea name="host-description" id='host-description' class='materialize-textarea'></textarea>
                       <label for='textarea1'>Description</label>
                       </div>
                   </div>
@@ -67,8 +67,35 @@
               </div>
             </div>
 
+            <!-- Account Settings Form -->
+            <div>
+              <form id="account-settings-form" style="display:none;">
+                <p>
+                  Manage Account Password
+                </p>
+                <div class='row'>
+                  <div class='input-field col s8'>
+                    <input id='old-password' type='password' class='validate'>
+                    <label>Old Password</label>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='input-field col s8'>
+                    <input id='new-password' type='password' class='validate'>
+                    <label>New Password</label>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='input-field col s8'>
+                    <input id='comfirm-password' type='password' class='validate'>
+                    <label>Comfirm Password</label>
+                  </div>
+                </div>
+                <button id='update-account' class='waves-effect waves-light btn' type='submit'>Update</button>
+              </form>
+            </div>
 
-            <!-- Profile Settings Form -->
+            <!-- Email Settings Form -->
             <div>
               <form id='email-settings-form' style='display:none;'>
                 <p>
@@ -83,23 +110,24 @@
                 </p>
                 <div class='row'>
                   <div class='input-field col s12'>
-                    <input id='host-email-address' type='email' class='validate'>
+                    <input name="host-email" id='host-email-address' type='email' class='validate'>
                     <label>Change Primary Email Address</label>
                   </div>
                 </div>
                 <div class='row'>
                   <div class='input-field col s6'>
-                    <input type='checkbox' id='private-check' />
+                    <input name="private-check" type='checkbox' id='private-check' />
                     <label for='private-check'>Keep my email address private.</label>
                   </div>
                   <div class='input-field col s6'>
-                    <input type='checkbox' id='email-notifications' />
+                    <input name="email-notification" type='checkbox' id='email-notifications' />
                     <label for='email-notifications'>Recieve updates, account-related notifications, and TriviaLite news via email.</label>
                   </div>
                 </div>
                 <button id='update-profile' class='waves-effect waves-light btn' type='submit'>Submit</button>
               </form>
             </div>
+
 
 
           </div>
