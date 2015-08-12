@@ -99,7 +99,9 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         setAccount: function() {
-
+          var settings = $("#account-settings-form").serializeArray();
+          console.log(settings);
+          return false;
         },
 
         /*

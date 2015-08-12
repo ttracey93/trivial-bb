@@ -11,28 +11,41 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/list.ejs'],
 
+        eventTemplate: JST['app/scripts/templates/host-event.ejs'],
+
         events: {
           "click #list-date-picker": "pickDate"
         },
 
-        initialize: function (data) {
+        initialize: function () {
             //this.listenTo(this.model, 'change', this.render);
             //this.model = new TriviaL.Models.Event(data);
 
+            /*
             //Get test data.
             var testData = {"name":"Event2","host":"dubforce","address":"42 Moonland Street","city":"Orlando","state":"Florida","zip":"54487","date":"December, 1 2011","time":"3:40PM"};
             //Create model.
             var event = new TriviaL.Models.Event(testData);
             //Create collection.
             this.eventsCollection = new TriviaL.Collections.Events(event);
+            */
 
             this.render();
         },
 
         render: function () {
+            var events = new TriviaL.Collections.Events('Jacksonville','search');
+            events.fetch();
+
+            //console.log(events);
+
+            $.each(events.models, function(index,val) {
+              console.log(val.attributes);
+            });
+
 
             //Passing in the collection of events.
-            this.$el.html(this.template( { data: this.eventsCollection } ));
+            this.$el.html(this.template());
         },
 
         /* Event functions */

@@ -80,8 +80,13 @@ TriviaL.Routers = TriviaL.Routers || {};
         },
 
         // List all searched results.
-        list: function(data) {
-          new TriviaL.Views.List(data);
+        list: function() {
+          if(TriviaL.Views.list) {
+            TriviaL.Views.list.render();
+          }
+          else {
+            TriviaL.Views.list = new TriviaL.Views.List();
+          }
         },
 
         // Host dashboard

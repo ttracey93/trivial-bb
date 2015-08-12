@@ -1,0 +1,28 @@
+<li class="collection-item avatar">
+  <i class="material-icons circle">folder</i>
+  <span class="title">
+    <a href="">
+      <%= data.models[i].attributes.name %>
+    </a>
+    hosted by
+    <a href="#/hosts/<%= data.models[i].attributes.host %>">
+      <i class="fa fa-user"></i>
+      <%= data.models[i].attributes.host %>
+    </a>
+  </span>
+  <p>
+    <%= data.models[i].attributes.address %> <br>
+    <%= data.models[i].attributes.city %>,
+    <%= data.models[i].attributes.state %>
+    <%= data.models[i].attributes.zip %>
+  </p>
+  <br>
+  <p class="event-desc">
+    Visit this awesome place to play trivia. We have BOGO beer deals.
+    This is some dope ass shit, I mean who doesn't love trivia.
+  </p>
+  <p class="secondary-content">
+    Starts at <%= data.models[i].attributes.time %>
+    on  <%= data.models[i].attributes.date %>
+  </p>
+</li>
