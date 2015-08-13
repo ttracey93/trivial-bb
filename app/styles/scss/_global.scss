@@ -43,30 +43,30 @@ body {
 
 /* Begin Materialize Overrides */
 input:focus {
-  border-bottom: 1px solid #42a5f5 !important;
-  -webkit-box-shadow: 0 1px 0 0 #42a5f5 !important;
-  -moz-box-shadow: 0 1px 0 0 #42a5f5 !important;
-  box-shadow: 0 1px 0 0 #42a5f5 !important;
+  border-bottom: 1px solid $primary-color !important;
+  -webkit-box-shadow: 0 1px 0 0 $primary-color !important;
+  -moz-box-shadow: 0 1px 0 0 $primary-color !important;
+  box-shadow: 0 1px 0 0 $primary-color !important;
 }
 
 textarea:focus {
-  border-bottom: 1px solid #42a5f5 !important;
-  -webkit-box-shadow: 0 1px 0 0 #42a5f5 !important;
-  -moz-box-shadow: 0 1px 0 0 #42a5f5 !important;
-  box-shadow: 0 1px 0 0 #42a5f5 !important;
+  border-bottom: 1px solid $primary-color !important;
+  -webkit-box-shadow: 0 1px 0 0 $primary-color !important;
+  -moz-box-shadow: 0 1px 0 0 $primary-color !important;
+  box-shadow: 0 1px 0 0 $primary-color !important;
 }
 
 input:focus+label{
-  color: #42a5f5 !important;
+  color: $primary-color;
 }
 
 textarea:focus+label {
-  color: #42a5f5 !important;
+  color: $primary-color;
 }
 
 [type="checkbox"]:checked+label:before {
-  border-right: 2px solid #42a5f5 !important;
-  border-bottom: 2px solid #42a5f5 !important;
+  border-right: 2px solid $primary-color !important;
+  border-bottom: 2px solid $primary-color !important;
 }
 /* End Materialize Overrides */
 
