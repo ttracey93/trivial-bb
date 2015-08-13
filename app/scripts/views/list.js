@@ -29,23 +29,27 @@ TriviaL.Views = TriviaL.Views || {};
             //Create collection.
             this.eventsCollection = new TriviaL.Collections.Events(event);
             */
-
             this.render();
         },
 
         render: function () {
+
             var events = new TriviaL.Collections.Events('Jacksonville','search');
-            events.fetch();
+            events.fetch(
+              {
+                success: function() {
+                  //console.log(events.models);
+                }
+              }
+            );
+            //this.$el.html(this.template({data:'df'}));
+        },
 
-            //console.log(events);
-
-            $.each(events.models, function(index,val) {
-              console.log(val.attributes);
-            });
-
-
-            //Passing in the collection of events.
-            this.$el.html(this.template());
+        generateTmp: function(models) {
+          models.fetch();
+          console.log(models);
+          //Passing in the collection of events.
+          this.$el.html(this.template( {data:models} ));
         },
 
         /* Event functions */

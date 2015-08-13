@@ -17,17 +17,17 @@ TriviaL.Collections = TriviaL.Collections || {};
           switch (type) {
             case 'search':
               var city = term;
-              this.url = TriviaL.api + '/events/search/' + city;
+              this.url = TriviaL.Services.apiUrl('eventsSearch',city);
               break;
             default:
               var owner = term.toLowerCase();
-              this.url = TriviaL.api + '/events/byOwner/' + owner;
+              this.url = TriviaL.Services.apiUrl('eventsOwner', owner);
           }
         },
 
         parse: function(response) {
-          console.log(response[0].name);
-          this.set({ name: response[0].name})
+          console.log(response);
+          this.models = response;
           return response.events;
         }
 

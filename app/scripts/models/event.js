@@ -11,7 +11,7 @@ TriviaL.Models = TriviaL.Models || {};
         },
 
         initialize: function(id) {
-          this.url = TriviaL.api + '/events/' + id;
+          this.url = TriviaL.Services.apiUrl('events',id);
         },
 
         validate: function(attrs, options) {
