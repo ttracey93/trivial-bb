@@ -8,7 +8,7 @@ var URLs = {
     return TriviaL.api + "/hosts/" + id;
   },
   events: function(id) {
-    return TriviaL.api + "/events/search/" + id;
+    return TriviaL.api + "/events/" + id;
   },
   eventsOwner: function(owner) {
     return TriviaL.api + "/events/byOwner/" + owner;

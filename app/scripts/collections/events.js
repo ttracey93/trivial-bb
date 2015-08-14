@@ -26,9 +26,9 @@ TriviaL.Collections = TriviaL.Collections || {};
         },
 
         parse: function(response) {
-          console.log(response);
-          this.models = response;
-          return response.events;
+          //console.log(response);
+          //this.models = response;
+          return response;
         }
 
     });

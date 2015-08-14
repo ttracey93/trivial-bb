@@ -14,7 +14,8 @@ TriviaL.Views = TriviaL.Views || {};
         eventTemplate: JST['app/scripts/templates/host-event.ejs'],
 
         events: {
-          "click #list-date-picker": "pickDate"
+          "click #list-date-picker": "pickDate",
+          "submit #listing-search": "searchListing"
         },
 
         initialize: function () {
@@ -33,23 +34,23 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         render: function () {
-
+            var _thisEl = this.$el;
+            var _thisTmp = this.template;
             var events = new TriviaL.Collections.Events('Jacksonville','search');
+            this.collection = events;
             events.fetch(
               {
                 success: function() {
-                  //console.log(events.models);
+                  console.log(events.models);
+                  _thisEl.html(_thisTmp( {data: events} ));
                 }
               }
             );
-            //this.$el.html(this.template({data:'df'}));
+            //this.$el.html(this.template());
         },
 
-        generateTmp: function(models) {
-          models.fetch();
-          console.log(models);
-          //Passing in the collection of events.
-          this.$el.html(this.template( {data:models} ));
+        searchListing: function() {
+
         },
 
         /* Event functions */

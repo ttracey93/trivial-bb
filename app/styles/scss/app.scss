@@ -32,3 +32,32 @@ body {
 .primary-color-text {
   color: $primary-color;
 }
+
+.secondary-color-bg {
+  background-color: $secondary-color;
+}
+
+.secondary-color-text {
+  color: $secondary-color;
+}
+
+.collection {
+  a:hover {
+    color: $secondary-color;
+  }
+}
+
+#CARDS
+.card {
+  .card-content {
+    .card-title {
+      color: $primary-color;
+    }
+  }
+} 
+
+nav {
+  a:hover {
+    color: $secondary-color;
+  }
+}

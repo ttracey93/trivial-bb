@@ -2,16 +2,21 @@
 <div class="row">
 
   <div id="dashboard-nav" class="col s2">
-    <!-- Grey navigation panel -->
+    
     <div id="dashboard-links" class="collection" >
-
-    <p> 2,345 Results Found</p>
-      <div class="row">
-       <div class="input-field col s12">
-         <input value="" id="first_name2" type="text" class="validate">
-         <label for="first_name2">Seach</label>
+      <form id="listing-search">
+        <div class="row">
+         <div class="input-field col s12">
+           <input value="" id="first_name2" type="text" class="validate">
+           <label for="first_name2">Seach</label>
+         </div>
        </div>
-     </div>
+       <div class="row">
+         <div class="col s12">
+           <button style="width:100%;" type="submit" class="waves-effect primary-color-bg waves-light btn">Search</button> 
+         </div> 
+       </div>
+      </form>
     <ul class="collapsible" data-collapsible="accordion">
      <li>
        <div class="collapsible-header">Date</div>
@@ -27,76 +32,21 @@
      </li>
     </ul>
 
-
-    <!--
-
-    <p>  Search Menu</p>
-      <br>
-      <div class="row">
-       <div class="input-field col s12">
-         <input value="" id="first_name2" type="text" class="validate">
-         <label for="first_name2">Seach</label>
-       </div>
-     </div>
-     <p>  Date filter</p>
-     <br>
-    <div class="row">
-     <div class="input-field col s12">
-       <input id="list-date-picker" type="date">
-       <label class="active" for="start">State Date</label>
-     </div>
-   </div>
-   <div class="row">
-    <div class="input-field col s12">
-      <input id="list-date-picker" type="date">
-      <label class="active" for="start">End Date</label>
-    </div>
-  </div>
-   <p>  Refine by</p>
-   <br>
-    <div class="row">
-     <div class="input-field col s12">
-      <p>Categories</p>
-      <p>
-        <input type="checkbox" id="test1"/>
-        <label for="test1">Sports</label>
-      </p>
-      <p>
-        <input type="checkbox" id="test2"/>
-        <label for="test2">History</label>
-      </p>
-      <p>
-        <input type="checkbox" id="test3"/>
-        <label for="test3">Pop Culture</label>
-      </p>
-      <p>
-        <input type="checkbox" id="test4"/>
-        <label for="test4">General</label>
-      </p>
-      <p>
-        <input type="checkbox" id="test5"/>
-        <label for="test5">Science</label>
-      </p>
-     </div>
-   </div>
-
-   -->
     </div>
   </div>
 
   <div id="dashboard-page" class="col s10">
-    <!-- Teal page content  -->
 
     <div class="row">
 
       <ul class="collection">
 
-        <% for(var i=0; i<data.length; i++) {%>
+                <% for(var i=0; i<data.models.length; i++) {%>
 
           <li class="collection-item avatar">
             <i class="material-icons circle">folder</i>
             <span class="title">
-              <a href="">
+              <a href="#/events/<%= data.models[i].attributes._id %>">
                 <%= data.models[i].attributes.name %>
               </a>
               hosted by
@@ -117,8 +67,7 @@
               This is some dope ass shit, I mean who doesn't love trivia.
             </p>
             <p class="secondary-content">
-              Starts at <%= data.models[i].attributes.time %>
-              on  <%= data.models[i].attributes.date %>
+              <%= data.models[i].attributes.dateTime %>
             </p>
           </li>
 
