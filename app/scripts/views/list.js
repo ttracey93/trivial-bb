@@ -19,38 +19,31 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         initialize: function () {
-            //this.listenTo(this.model, 'change', this.render);
-            //this.model = new TriviaL.Models.Event(data);
-
-            /*
-            //Get test data.
-            var testData = {"name":"Event2","host":"dubforce","address":"42 Moonland Street","city":"Orlando","state":"Florida","zip":"54487","date":"December, 1 2011","time":"3:40PM"};
-            //Create model.
-            var event = new TriviaL.Models.Event(testData);
-            //Create collection.
-            this.eventsCollection = new TriviaL.Collections.Events(event);
-            */
-            this.render();
+          this.collection = new TriviaL.Collections.Events('Jacksonville','search');
+          this.render();
         },
 
-        render: function () {
-            var _thisEl = this.$el;
-            var _thisTmp = this.template;
-            var events = new TriviaL.Collections.Events('Jacksonville','search');
-            this.collection = events;
-            events.fetch(
-              {
-                success: function() {
-                  console.log(events.models);
-                  _thisEl.html(_thisTmp( {data: events} ));
-                }
+        render: function() {
+          var _thisEl = this.$el;
+          var _thisTmp = this.template;
+          var events = this.collection;
+          events.fetch(
+            {
+              success: function() {
+                console.log(events);
+                _thisEl.html(_thisTmp( {data: events} ));
               }
-            );
-            //this.$el.html(this.template());
+            }
+          );
         },
 
-        searchListing: function() {
-
+        //Renders a new listing based off new search term.
+        searchListing: function(e) {
+          var term = $("#search-listing-input").val();
+          this.collection.reset();
+          this.collection.setSearch(term);
+          this.render();
+          return false;
         },
 
         /* Event functions */

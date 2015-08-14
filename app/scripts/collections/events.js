@@ -29,6 +29,10 @@ TriviaL.Collections = TriviaL.Collections || {};
           //console.log(response);
           //this.models = response;
           return response;
+        },
+
+        setSearch: function(term) {
+          this.url = TriviaL.Services.apiUrl('eventsSearch',term);
         }
 
     });
