@@ -18,15 +18,16 @@ TriviaL.Views = TriviaL.Views || {};
           "submit #listing-search": "searchListing"
         },
 
-        initialize: function () {
-          this.collection = new TriviaL.Collections.Events('Jacksonville','search');
-          this.render();
+        initialize: function (data) {
+          //console.log(data);
+          this.render(data);
         },
 
-        render: function() {
+        render: function(data) {
           var _thisEl = this.$el;
           var _thisTmp = this.template;
-          var events = this.collection;
+          var events = new TriviaL.Collections.Events(data,'search');
+
           events.fetch(
             {
               success: function() {
@@ -39,10 +40,12 @@ TriviaL.Views = TriviaL.Views || {};
 
         //Renders a new listing based off new search term.
         searchListing: function(e) {
+          /*
+           * @TODO Run the search term thought a google's geocoding service.
+           */
           var term = $("#search-listing-input").val();
-          this.collection.reset();
-          this.collection.setSearch(term);
-          this.render();
+          var url ="#/search/" + term;
+          window.router.navigate(url, {trigger: true});
           return false;
         },
 

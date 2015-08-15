@@ -32,14 +32,13 @@ TriviaL.Views = TriviaL.Views || {};
           var address = $("input[name='search-query']").val();
           this.geocoder.geocode({'address': address},function(results, status) {
             if(status == google.maps.GeocoderStatus.OK) {
-               console.log(results[0]);
-               //Send to /search for listings.
-
-               //Don't think this works because the function list is
-               // out of the scope.
-               //TriviaL.Routers.AppRouter.list(results[0]);
-
-               new TriviaL.Views.List(results[0]);
+              /*
+               * @TODO Check if search term is zip code or city.
+               *        Then select the right address_components.
+               */
+               var city = results[0].address_components[1].long_name;
+               var url = '#/search/' + city;
+               window.router.navigate(url, {trigger: true});
             } else {
               console.log('Geocode was not successful.');
             }
