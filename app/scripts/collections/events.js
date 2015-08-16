@@ -16,8 +16,8 @@ TriviaL.Collections = TriviaL.Collections || {};
         initialize: function(term,type) {
           switch (type) {
             case 'search':
-              var city = term;
-              this.url = TriviaL.Services.apiUrl('eventsSearch',city);
+              var term = term;
+              this.url = TriviaL.Services.apiUrl('eventsSearch',term);
               break;
             default:
               var owner = term.toLowerCase();

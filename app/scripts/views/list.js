@@ -31,7 +31,7 @@ TriviaL.Views = TriviaL.Views || {};
           events.fetch(
             {
               success: function() {
-                console.log(events);
+                //console.log(events);
                 _thisEl.html(_thisTmp( {data: events} ));
               }
             }

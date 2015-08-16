@@ -30,19 +30,8 @@ TriviaL.Views = TriviaL.Views || {};
 
         search: function(e) {
           var address = $("input[name='search-query']").val();
-          this.geocoder.geocode({'address': address},function(results, status) {
-            if(status == google.maps.GeocoderStatus.OK) {
-              /*
-               * @TODO Check if search term is zip code or city.
-               *        Then select the right address_components.
-               */
-               var city = results[0].address_components[1].long_name;
-               var url = '#/search/' + city;
-               window.router.navigate(url, {trigger: true});
-            } else {
-              console.log('Geocode was not successful.');
-            }
-          });
+          var url = '#/search/' + address;
+          window.router.navigate(url, {trigger: true});
           return false;
         },
 

@@ -8,7 +8,7 @@ TriviaL.Routers = TriviaL.Routers || {};
     TriviaL.Routers.AppRouter = Backbone.Router.extend({
         routes: {
             '': 'search',
-            'search/:city': 'list',
+            'search/:term': 'list',
             'about': 'about',
             'register': 'register',
             'dashboard': 'dashboard',
@@ -80,13 +80,13 @@ TriviaL.Routers = TriviaL.Routers || {};
         },
 
         // List all searched results.
-        list: function(city) {
-          console.log(city);
+        list: function(term) {
+          console.log(term);
           if(TriviaL.Views.list) {
-            TriviaL.Views.list.render(city);
+            TriviaL.Views.list.render(term);
           }
           else {
-            TriviaL.Views.list = new TriviaL.Views.List(city);
+            TriviaL.Views.list = new TriviaL.Views.List(term);
           }
         },
 
