@@ -20,6 +20,7 @@ TriviaL.Views = TriviaL.Views || {};
 
         initialize: function (data) {
           //console.log(data);
+
           this.render(data);
         },
 
@@ -33,6 +34,11 @@ TriviaL.Views = TriviaL.Views || {};
               success: function() {
                 //console.log(events);
                 _thisEl.html(_thisTmp( {data: events} ));
+                $('.collapsible').collapsible({
+                  // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+                  accordion : false,
+                  expandable: true
+                });
               }
             }
           );

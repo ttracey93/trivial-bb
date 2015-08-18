@@ -74,27 +74,21 @@ TriviaL.Views = TriviaL.Views || {};
          */
 
         setProfile: function() {
-          var settings = {
-            settings: {
-              profile: $("#profile-settings-form").serializeArray() //this._getProfileData()
-            }
-          };
+          var settings = this._getProfileData();
 
           console.log(settings);
-          this.model.set(settings);
+          this.model.set({profile: settings});
           console.log(this.model);
-          //this.model.save({patch: true});
+          this.model.save();
           return false;
         },
 
         setEmail: function() {
-          var settings = {
-            settings: {
-              email: $("#email-settings-form").serializeArray()
-            }
-          }
-          this.model.set(settings);
+          var settings = this._getEmailData();
+
+          this.model.set({email: settings});
           console.log(this.model);
+          this.model.save({patch: true});
           return false;
         },
 
@@ -124,6 +118,24 @@ TriviaL.Views = TriviaL.Views || {};
           $('form').css('display','none');
           //Display selected form.
           $('#'+id).css('display','block');
+        },
+
+        _getProfileData: function() {
+          return {
+            profileImage: $('#host-profile-image').val(),
+            bannerImage: $('#host-banner-image').val(),
+            company: $('#host-company-name').val(),
+            location: $('#host-location').val(),
+            description: $('#host-description').val()
+          };
+        },
+
+        _getEmailData: function() {
+          return {
+            email: $('#host-email-address').val(),
+            private: $('#private-check').val(),
+            notifications: $('#email-notifications').val()
+          };
         }
 
     });
