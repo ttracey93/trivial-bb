@@ -7,6 +7,8 @@ TriviaL.Models = TriviaL.Models || {};
 
     TriviaL.Models.Host = Backbone.Model.extend({
 
+        idAttribute: '_id',
+
         initialize: function(targetUrl) {
           this.url = TriviaL.Services.apiUrl('hosts',targetUrl);
         },

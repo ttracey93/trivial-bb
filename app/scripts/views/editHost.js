@@ -77,9 +77,11 @@ TriviaL.Views = TriviaL.Views || {};
           var settings = this._getProfileData();
 
           console.log(settings);
+          this.model.fetch();
           this.model.set({profile: settings});
-          console.log(this.model);
-          this.model.save();
+          this.model.save(null, {
+            type: 'PUT'
+          });
           return false;
         },
 
