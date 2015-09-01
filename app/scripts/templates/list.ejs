@@ -6,9 +6,9 @@
     <div id="dashboard-links" class="collection" >
     <ul class="collapsible" data-collapsible="accordion">
      <li>
-       <div class="collapsible-header">Date</div>
-       <div class="collapsible-body">
-         <form>
+       <div class="collapsible-header">Day</div>
+       <div id="day-checkboxes" class="collapsible-body" style="padding:15px;">
+         <!--<form>-->
            <div class="row">
              <input type="checkbox" class="filled-in" id="monday"/>
              <label for="monday">Monday</label>
@@ -37,7 +37,7 @@
              <input type="checkbox" class="filled-in" id="sunday"/>
              <label for="sunday">Sunday</label>
            </div>
-         </form>
+         <!--</form>-->
        </div>
      </li>
      <li>
@@ -78,7 +78,7 @@
 
     <div class="row">
 
-      <ul class="collection">
+      <ul id="event-listings" class="collection">
 
                 <% for(var i=0; i<data.models.length; i++) {%>
 

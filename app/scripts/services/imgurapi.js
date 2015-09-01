@@ -1,28 +1,24 @@
 TriviaL.Services = TriviaL.Services || {};
 
-TriviaL.Services.ImgurApi = function() {
-
-  apiKey: "b9461b8251760da",
-
-  uploadURL: "https://api.imgur.com/3/upload/",
-
-  upload: function(data) {
-    var parameters = {
-      key: apiKey,
-      image: data.image,
-      album: data.album,
-      type: data.type,
-      name: data.name,
-      title: data.title,
-      description: data.description
+TriviaL.Services.upload = function(data) {
+  $.ajax({
+    url: 'https://api.imgur.com/3/image',
+    headers: {
+        'Authorization': 'Client-ID b9461b8251760da'
+    },
+    type: 'POST',
+    data: {
+        'image': 'http://cdn.embed.ly/providers/logos/imgur.png',
+        'title': 'testing',
+        'album': 'LIlCu'
+    },
+    success: function(json) { 
+        console.log(json);
     }
-
-    $.post(uploadURL,parameters,function(data) {
-      console.log(data);
-    })
-  },
-
+  });
+  return false;
 }
+
 
 /*
 Upload parameters.

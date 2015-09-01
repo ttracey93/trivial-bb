@@ -1,5 +1,31 @@
-<li class="collection-item">
-  <p>
-    <%= name %>
-  </p>
-</li>
+ <% for(var i=0; i<data.models.length; i++) {%>
+
+  <li class="collection-item avatar">
+    <i class="material-icons circle">folder</i>
+    <span class="title">
+      <a href="#/events/<%= data.models[i].attributes._id %>">
+        <%= data.models[i].attributes.name %>
+      </a>
+      hosted by
+      <a href="#/hosts/<%= data.models[i].attributes.host %>">
+        <i class="fa fa-user"></i>
+        <%= data.models[i].attributes.host %>
+      </a>
+    </span>
+    <p>
+      <%= data.models[i].attributes.address %> <br>
+      <%= data.models[i].attributes.city %>,
+      <%= data.models[i].attributes.state %>
+      <%= data.models[i].attributes.zip %>
+    </p>
+    <br>
+    <p class="event-desc">
+      Visit this awesome place to play trivia. We have BOGO beer deals.
+      This is some dope ass shit, I mean who doesn't love trivia.
+    </p>
+    <p class="secondary-content">
+      <%= data.models[i].attributes.dateTime %>
+    </p>
+  </li>
+
+<% } %>

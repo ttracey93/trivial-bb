@@ -32,15 +32,17 @@ TriviaL.Views = TriviaL.Views || {};
 
         render: function () {
           var host = this.model.attributes.host;
+          /*
           var profileImageUrl = host.profileImageId ? 'http://imgur.com/' + host.profileImageId + '.jpg' :
             'http://placehold.it/350x150';
           var bannerImageUrl = host.bannerImageId ? 'http://imgur.com/' + host.bannerImageId + '.jpg' :
           'http://placehold.it/350x150';
+          */
 
           this.$el.html(this.template({
             'host': this.model.attributes.host,
-            'profileImageUrl': 'http://imgur.com/' + this.model.attributes.host.profileImageId + '.jpg',
-            'bannerImageUrl': 'http://imgur.com/' + this.model.attributes.host.bannerImageId + '.jpg'
+            'profileImageUrl': 'http://placehold.it/350x150', //'http://imgur.com/' + this.model.attributes.host.profileImageId + '.jpg',
+            'bannerImageUrl': 'http://placehold.it/350x150' //'http://imgur.com/' + this.model.attributes.host.bannerImageId + '.jpg'
           }));
 
           return this;
@@ -75,7 +77,25 @@ TriviaL.Views = TriviaL.Views || {};
 
         setProfile: function() {
           var settings = this._getProfileData();
-
+          var url = "http://localhost/trivial-backend/trivial-1/scripts/uploadImage.php";
+          var data = $('#profile-settings-form').serialize();
+          var _thisModel = this.model;
+          
+          //Upload image.
+          console.log("ABOUT OT PPOST");
+          /*
+          */
+          $.post(url,data,function(data) {
+            console.log("Posting image.");
+            _thisModel.fetch();
+            _thisModel.set({profile: settings});
+            _thisModel.save(null, {
+               type: 'PUT'
+            });
+            return false;
+          });
+          return false;
+          /*
           console.log(settings);
           this.model.fetch();
           this.model.set({profile: settings});
@@ -83,6 +103,7 @@ TriviaL.Views = TriviaL.Views || {};
             type: 'PUT'
           });
           return false;
+          */
         },
 
         setEmail: function() {

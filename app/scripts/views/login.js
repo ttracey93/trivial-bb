@@ -12,7 +12,7 @@ TriviaL.Views = TriviaL.Views || {};
       template: JST['app/scripts/templates/login.ejs'],
 
       events: {
-        "click #login-button" : "login"
+        "submit #login-form": "login"
       },
 
       login: function() {

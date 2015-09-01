@@ -21,6 +21,9 @@ var URLs = {
   },
   subscriptions: function(userId, id) {
     return "/api/users/"+ userId +"/subscriptions/" + id;
+  },
+  uploadImage: function() {
+    return TriviaL.api + "/scripts/uploadImage.php";
   }
 }
 

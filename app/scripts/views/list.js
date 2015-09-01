@@ -6,7 +6,9 @@ TriviaL.Views = TriviaL.Views || {};
     'use strict';
 
     TriviaL.Views.List = Backbone.View.extend({
-
+        
+        selectedDayFilters: [],
+        
         el: "#view",
 
         template: JST['app/scripts/templates/list.ejs'],
@@ -15,24 +17,24 @@ TriviaL.Views = TriviaL.Views || {};
 
         events: {
           "click #list-date-picker": "pickDate",
-          "submit #listing-search": "searchListing"
+          "submit #listing-search": "searchListing",
+          "change #day-checkboxes": "dayFilter"
         },
 
         initialize: function (data) {
           //console.log(data);
-
-          this.render(data);
+          this.eventCollection = new TriviaL.Collections.Events(data,'search');
+          this.render();
         },
 
-        render: function(data) {
+        render: function() {
           var _thisEl = this.$el;
           var _thisTmp = this.template;
-          var events = new TriviaL.Collections.Events(data,'search');
-
+          var events = this.eventCollection
+          
           events.fetch(
             {
               success: function() {
-                //console.log(events);
                 _thisEl.html(_thisTmp( {data: events} ));
                 $('.collapsible').collapsible({
                   // A setting that changes the collapsible behavior to expandable instead of the default accordion style
@@ -46,12 +48,13 @@ TriviaL.Views = TriviaL.Views || {};
 
         //Renders a new listing based off new search term.
         searchListing: function(e) {
-          /*
-           * @TODO Run the search term thought a google's geocoding service.
-           */
+          
           var term = $("#search-listing-input").val();
-          var url ="#/search/" + term;
-          window.router.navigate(url, {trigger: true});
+          TriviaL.Services.Geocode(term,function(city,state) {
+            var url = '#/search/' + city + "," + state;
+            window.router.navigate(url, {trigger: true});  
+          });
+           
           return false;
         },
 
@@ -64,6 +67,53 @@ TriviaL.Views = TriviaL.Views || {};
             }
           );
         },
+        
+        /**
+         * I was trying to solve the filter by day issue.
+         * I have it done by a single day.
+         * However an issue comes up when a user selected multiply days to filter by.
+         */
+        
+        //Filters the list of events by day of the week.
+        dayFilter: function(e) {
+          
+          //Get user selected day(s).
+          //var selectedDay = this._getNumericDayValue(e.target.id);
+          this.selectedDayFilters.push(this._getNumericDayValue(e.target.id));
+          for(var i = 0; i < this.eventCollection.models.length; i++) {
+            var currentDay = this.eventCollection.models[i].attributes.dateTime;       
+            var dateObj = new Date(currentDay);
+            
+            //Remove all events that are not on a day that is in the "selectedDayFilters."
+            for(var k = 0; k < this.selectedDayFilters.length; k++) {
+              if(dateObj.getDay() != k) {
+                this.eventCollection.remove(this.eventCollection.at(i));                
+              }  
+            }
+            
+            /*
+            if(dateObj.getDay() != selectedDay) {
+              this.eventCollection.remove(this.eventCollection.at(i));
+            } 
+            */
+          }
+          //Update event listings view.
+          $("#event-listings").html(this.eventTemplate( {data: this.eventCollection} ));
+        },
+        
+        _getNumericDayValue: function(val) {
+          var day = val.toLowerCase();
+          var dayList = {
+            'sunday': 0,
+            'monday': 1,
+            'tuesday': 2,
+            'wednesday': 3,
+            'thursday': 4,
+            'friday': 5,
+            'saturday': 6,
+          };
+          return dayList[day];
+        }
 
     });
 

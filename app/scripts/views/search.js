@@ -11,27 +11,22 @@ TriviaL.Views = TriviaL.Views || {};
 
         template: JST['app/scripts/templates/search.ejs'],
 
-        //Create a google map geocoder object
-        geocoder: new google.maps.Geocoder(),
-
         events: {
-          "submit": "search"
+          "submit #search-form": "search"
         },
 
         initialize: function () {
-            /*
-             * @description: Sets up the location via HTML5 geolocation.
-             * @param {function} setUpHTML5Location - Called on success.
-             * @param {function} setUpHTML5Location - Called on success.
-             */
-            geolocator.locate(this.setUpHTML5Location);
             this.render();
         },
 
         search: function(e) {
           var address = $("input[name='search-query']").val();
-          var url = '#/search/' + address;
-          window.router.navigate(url, {trigger: true});
+          
+          //Sending to geocode.
+          TriviaL.Services.Geocode(address, function(city,state) {
+            var url = '#/search/' + city + "," + state;
+            window.router.navigate(url, {trigger: true});
+          });
           return false;
         },
 
@@ -42,6 +37,7 @@ TriviaL.Views = TriviaL.Views || {};
         },
 
         render: function () {
+            geolocator.locate(this.setUpHTML5Location);
             this.$el.html(this.template(/*this.model.toJSON()*/));
             $(function() {
               $('.search-box').vegas({
