@@ -1,79 +1,57 @@
 <!-- Page Layout here -->
 <div class="row">
-
   <div id="dashboard-nav" class="col s2">
-
     <div id="dashboard-links" class="collection" >
-    <ul class="collapsible" data-collapsible="accordion">
-     <li>
-       <div class="collapsible-header">Day</div>
-       <div id="day-checkboxes" class="collapsible-body" style="padding:15px;">
-         <!--<form>-->
-           <div class="row">
-             <input type="checkbox" class="filled-in" id="monday"/>
-             <label for="monday">Monday</label>
-           </div>
-           <div class="row">
-             <input type="checkbox" class="filled-in" id="tuesday"/>
-             <label for="tuesday">Tuesday</label>
-           </div>
-           <div class="row">
-             <input type="checkbox" class="filled-in" id="wednesday"/>
-             <label for="wednesday">Wednesday</label>
-           </div>
-           <div class="row">
-             <input type="checkbox" class="filled-in" id="thursday"/>
-             <label for="thursday">Thursday</label>
-           </div>
-           <div class="row">
-             <input type="checkbox" class="filled-in" id="friday"/>
-             <label for="friday">Friday</label>
-           </div>
-           <div class="row">
-             <input type="checkbox" class="filled-in" id="saturday"/>
-             <label for="saturday">Saturday</label>
-           </div>
-           <div class="row">
-             <input type="checkbox" class="filled-in" id="sunday"/>
-             <label for="sunday">Sunday</label>
-           </div>
-         <!--</form>-->
-       </div>
-     </li>
-     <li>
-       <div class="collapsible-header">Range</div>
-       <div class="collapsible-body">
-       <div class="row">
-        <div class="input-field col s12">
-          <input id="number-range" type="number" class="validate">
-          <label for="number-range" data-error="wrong" data-success="right">Miles Away</label>
-        </div>
-      </div>
-       </div>
-     </li>
-     <li>
-       <div class="collapsible-header">Category</div>
-       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-     </li>
-    </ul>
+      <!-- Search & Filter form -->
       <form id="listing-search">
+        <ul class="collapsible" data-collapsible="accordion">
+          <!-- Location input -->
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="location-filter" type="text" class="validate">
+              <label for="location-filter">Location</label>
+            </div>
+          </div>
+     
+          <!-- Date range dropdown filter -->
+          <li>
+            <div class="collapsible-header">Date Range</div>
+              <div id="day-checkboxes" class="collapsible-body" style="padding:15px;">
+                <br>
+                <div class="row">
+                  From
+                  <input id="from-date-filter" type="date" name="bday">
+                </div>
+                <div class="row">
+                  To
+                <input id="to-date-filter" type="date" name="bday">
+                </div>
+              </div>
+          </li>
+          
+          <!-- Distance dropdown -->
+          <li>
+            <div class="collapsible-header">Distance</div>
+              <div class="collapsible-body">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="distance-radius" type="number" class="validate">
+                    <label for="distance-radius" data-error="wrong" data-success="right">Miles Away</label>
+                  </div>
+                </div>
+              </div>   
+          </li>
+        </ul>
         <div class="row">
-         <div class="input-field col s12">
-           <input value="" id="search-listing-input" type="text" class="validate">
-           <label for="first_name2">Seach</label>
-         </div>
-       </div>
-       <div class="row">
-         <div class="col s12">
-           <button style="width:100%;" type="submit" class="waves-effect primary-color-bg waves-light btn">Search</button>
-         </div>
-       </div>
+          <div class="col s12">
+            <button style="width:100%;" type="submit" class="waves-effect primary-color-bg waves-light btn">Search</button>
+          </div>
+        </div>
       </form>
-
-
     </div>
   </div>
-
+   
+  <!-- Event Listing -->
   <div id="dashboard-page" class="col s10">
 
     <div class="row">

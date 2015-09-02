@@ -17,8 +17,7 @@ TriviaL.Views = TriviaL.Views || {};
 
         events: {
           "click #list-date-picker": "pickDate",
-          "submit #listing-search": "searchListing",
-          "change #day-checkboxes": "dayFilter"
+          "submit #listing-search": "searchListing"
         },
 
         initialize: function (data) {
@@ -49,72 +48,27 @@ TriviaL.Views = TriviaL.Views || {};
         //Renders a new listing based off new search term.
         searchListing: function(e) {
           
+          console.log(this._getFilterData());
+          /*
           var term = $("#search-listing-input").val();
           TriviaL.Services.Geocode(term,function(city,state) {
             var url = '#/search/' + city + "," + state;
             window.router.navigate(url, {trigger: true});  
           });
+          */
            
           return false;
         },
-
-        /* Event functions */
-        pickDate: function(e) {
-          $('.datepickerList').pickadate(
-            {
-              closeOnSelect: true,
-              closeOnClear: true,
-            }
-          );
-        },
         
-        /**
-         * I was trying to solve the filter by day issue.
-         * I have it done by a single day.
-         * However an issue comes up when a user selected multiply days to filter by.
-         */
-        
-        //Filters the list of events by day of the week.
-        dayFilter: function(e) {
-          
-          //Get user selected day(s).
-          //var selectedDay = this._getNumericDayValue(e.target.id);
-          this.selectedDayFilters.push(this._getNumericDayValue(e.target.id));
-          for(var i = 0; i < this.eventCollection.models.length; i++) {
-            var currentDay = this.eventCollection.models[i].attributes.dateTime;       
-            var dateObj = new Date(currentDay);
-            
-            //Remove all events that are not on a day that is in the "selectedDayFilters."
-            for(var k = 0; k < this.selectedDayFilters.length; k++) {
-              if(dateObj.getDay() != k) {
-                this.eventCollection.remove(this.eventCollection.at(i));                
-              }  
-            }
-            
-            /*
-            if(dateObj.getDay() != selectedDay) {
-              this.eventCollection.remove(this.eventCollection.at(i));
-            } 
-            */
-          }
-          //Update event listings view.
-          $("#event-listings").html(this.eventTemplate( {data: this.eventCollection} ));
-        },
-        
-        _getNumericDayValue: function(val) {
-          var day = val.toLowerCase();
-          var dayList = {
-            'sunday': 0,
-            'monday': 1,
-            'tuesday': 2,
-            'wednesday': 3,
-            'thursday': 4,
-            'friday': 5,
-            'saturday': 6,
+        _getFilterData: function() {
+          return {
+            'location': $("#location-filter").val(),
+            'from-date-filter': $("#from-date-filter").val(),
+            'to-date-filter': $("#to-date-filter").val(),
+            'distance-radius': $("#distance-radius").val() 
           };
-          return dayList[day];
         }
-
+    
     });
 
 })();
