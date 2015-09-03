@@ -49,6 +49,7 @@ TriviaL.Views = TriviaL.Views || {};
             events.on('sync', function() {
               events.models.forEach(function(event) {
                 var data = event.attributes;
+                console.log(data);
 
                 hostEvents.append(eventTemplate(data));
               });

@@ -16,19 +16,17 @@ TriviaL.Collections = TriviaL.Collections || {};
         initialize: function(term,type) {
           switch (type) {
             case 'search':
-              var term = term;
               this.url = TriviaL.Services.apiUrl('eventsSearch',term);
               break;
             default:
-              var owner = term.toLowerCase();
+              var owner = term;
               this.url = TriviaL.Services.apiUrl('eventsOwner', owner);
           }
         },
 
         parse: function(response) {
-          //console.log(response);
-          //this.models = response;
-          return response;
+          console.log(response.events);
+          return response.events;
         },
 
         setSearch: function(term) {
