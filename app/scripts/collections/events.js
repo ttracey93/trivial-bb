@@ -25,8 +25,7 @@ TriviaL.Collections = TriviaL.Collections || {};
         },
 
         parse: function(response) {
-          console.log(response.events);
-          return response.events;
+          return response;
         },
 
         setSearch: function(term) {

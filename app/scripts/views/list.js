@@ -49,6 +49,16 @@ TriviaL.Views = TriviaL.Views || {};
         searchListing: function(e) {
           
           console.log(this._getFilterData());
+          
+          /** 
+           * I will need to create a couple of back end routes to 
+           *  handle the added filters.
+           * 
+           * Example: "#/search/jacksonville/from-date/to-date/distance"
+           * 
+           * I believe that will be the best way to handle it.
+           */
+          
           /*
           var term = $("#search-listing-input").val();
           TriviaL.Services.Geocode(term,function(city,state) {

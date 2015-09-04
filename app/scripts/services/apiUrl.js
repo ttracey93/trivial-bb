@@ -11,7 +11,7 @@ var URLs = {
     return TriviaL.api + "/events/" + id;
   },
   eventsOwner: function(owner) {
-    return TriviaL.api + "/events/byOwner/" + owner;
+    return TriviaL.api + "/events/owner/" + owner;
   },
   eventsSearch: function(search) {
     return TriviaL.api + "/events/search/" + search;
